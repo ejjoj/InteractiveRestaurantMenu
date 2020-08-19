@@ -1,6 +1,6 @@
 class App extends React.Component {
   state = {
-    'items': [
+    items: [
       { id: 1, name: 'herbata', active: true },
       { id: 2, name: 'ziemniaki', active: false },
       { id: 3, name: 'kasza', active: false },
@@ -10,11 +10,24 @@ class App extends React.Component {
     ]
   }
 
+  handleChangeStatus = (id) => {
+    const items = this.state.items.map(item => {
+      if (id === item.id) {
+        item.active = !item.active;
+      }
+      return item;
+    });
+
+    this.setState({
+      items: items
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
-        <Header items={this.state.items}/>
-        <ListItems />
+        <Header items={this.state.items} />
+        <ListItems items={this.state.items} changeStatus={this.handleChangeStatus} />
       </React.Fragment>
     );
   }

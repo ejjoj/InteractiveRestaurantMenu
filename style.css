@@ -9,10 +9,18 @@ li {
     cursor: pointer;
 }
 
+li:not(.active) {
+    color: grey;
+}
+
 li:nth-child(even) {
     background-color: #eee;
 }
 
 li:nth-child(odd) {
     background-color: #ccc;
+}
+
+.active {
+    font-weight: bold;
 }
